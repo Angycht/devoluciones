@@ -45,7 +45,7 @@ public class UsuarioController {
 	}
 	
 	@PutMapping("/{idUsuario}")
-	public ResponseEntity<Usuario> actualizarUsuario(@PathVariable int idUsuario, Usuario usuario){
+	public ResponseEntity<Usuario> actualizarUsuario(@PathVariable int idUsuario,@RequestBody Usuario usuario){
 		if(idUsuario != usuario.getId()) {
 			return ResponseEntity.badRequest().build();
 		}

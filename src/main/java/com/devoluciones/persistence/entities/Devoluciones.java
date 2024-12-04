@@ -10,9 +10,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+@Getter
+@Setter
 @Entity
 @Table(name = "devoluciones")
+@NoArgsConstructor
 public class Devoluciones {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -116,6 +121,6 @@ public class Devoluciones {
 	public void setTransportista(Transportista transportista) {
 		this.transportista = transportista;
 	}
-	
+
 	
 }

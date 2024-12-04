@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -12,7 +13,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
@@ -32,7 +39,13 @@ public class Usuario {
 	@Column(name = "contraseña", length = 255, nullable = false)
 	private String contrasenia;
 	
-	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+	@Column(length = 20, nullable = false)
+	private String telefono;
+	
+	@Column(length = 100, nullable = false)
+	private String correo;
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private List<Productos> productos;
 
@@ -82,7 +95,8 @@ public class Usuario {
 
 	public void setProductos(List<Productos> productos) {
 		this.productos = productos;
-	}
+	}	
+	
 	
 	
 }
