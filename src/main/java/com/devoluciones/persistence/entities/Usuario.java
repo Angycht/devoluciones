@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -21,7 +20,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
@@ -45,57 +44,62 @@ public class Usuario {
 	@Column(length = 100, nullable = false)
 	private String correo;
 	
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<Productos> productos;
-
+	
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
+	private List<Devoluciones> devoluciones;
+	
 	public Integer getId() {
 		return id;
 	}
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 	public String getApellidos() {
 		return apellidos;
 	}
-
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-
 	public String getDireccion() {
 		return direccion;
 	}
-
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-
 	public String getContrasenia() {
 		return contrasenia;
 	}
-
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
 	}
-
 	public List<Productos> getProductos() {
 		return productos;
 	}
-
 	public void setProductos(List<Productos> productos) {
 		this.productos = productos;
+	}
+	public String getTelefono() {
+		return telefono;
+	}
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+	public String getCorreo() {
+		return correo;
+	}
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}	
+	
 	
 	
 	

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.devoluciones.persistence.entities.Productos;
 import com.devoluciones.services.ProductoService;
 
+
 @RestController
 @RequestMapping("/productos")
 public class ProductoController {
@@ -31,12 +32,12 @@ public class ProductoController {
 	
 	@GetMapping("/{idProductos}")
 	public ResponseEntity<Productos> getProductosId(@PathVariable int idProductos){
-		Optional<Productos> productos = this.productoService.findById(idProductos);
-		if(productos.isEmpty()) {
+		Optional<Productos> producto = this.productoService.findById(idProductos);
+		if(producto.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}
 		
-		return ResponseEntity.ok(productos.get());
+		return ResponseEntity.ok(producto.get());
 	}
 	
 	@PostMapping

@@ -1,7 +1,6 @@
 package com.devoluciones.web.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.devoluciones.persistence.entities.Devoluciones;
 import com.devoluciones.services.DevolucionesService;
+import com.devoluciones.services.ProductoDevolucionService;
+import com.devoluciones.services.dtos.DevolucionesDTO;
+import com.devoluciones.services.dtos.ProductoDevolucionOutputDTO;
 
 @RestController
 @RequestMapping("/devoluciones")
@@ -24,18 +26,22 @@ public class DevolucionesController {
 	@Autowired
 	private DevolucionesService devolucionesService;
 	
+	@Autowired
+	private ProductoDevolucionService productoDevolucionService;
+	
+	//CRUDs de Devolucion
 	@GetMapping
-	public ResponseEntity<List<Devoluciones>> listaDevoluciones(){
+	public ResponseEntity<List<DevolucionesDTO>> listaDevoluciones(){
 		return ResponseEntity.ok(this.devolucionesService.findAll());
 	}
 	
 	@GetMapping("/{idDevoluciones}")
-	public ResponseEntity<Devoluciones> getDevolucionesId(@PathVariable int idDevoluciones){
-		Optional<Devoluciones> devoluciones = this.devolucionesService.findByid(idDevoluciones);
-		if(devoluciones.isEmpty()) {
-			return ResponseEntity.notFound().build();
+	public ResponseEntity<DevolucionesDTO> getDevolucionesId(@PathVariable int idDevoluciones){
+		if(this.devolucionesService.existeDevoluciones(idDevoluciones)) {
+			return ResponseEntity.ok(this.devolucionesService.findByid(idDevoluciones));
 		}
-		return ResponseEntity.ok(devoluciones.get());
+		
+		return ResponseEntity.notFound().build();
 	}
 	
 	@PostMapping
@@ -63,4 +69,11 @@ public class DevolucionesController {
 		
 		return ResponseEntity.notFound().build();
 	}
+	
+	//CRUDs de Producto
+	@GetMapping("/{idProducto}/devolucion")
+	public ResponseEntity<List<ProductoDevolucionOutputDTO>> listProducto(@PathVariable int idProducto){
+		return ResponseEntity.ok(this.productoDevolucionService.findByIdProducto(idProducto));
+	}
+
 }
