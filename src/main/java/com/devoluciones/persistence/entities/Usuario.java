@@ -36,7 +36,7 @@ public class Usuario {
 	@Column(name = "contraseña", length = 255, nullable = false)
 	private String contrasenia;
 	
-	@Column(length = 20, nullable = false)
+	@Column(length = 9, nullable = false)
 	private String telefono;
 	
 	@Column(length = 100, nullable = false)
