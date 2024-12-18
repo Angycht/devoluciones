@@ -8,8 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 
@@ -35,10 +33,6 @@ public class Productos {
 	
 	@Column(name = "fecha_compra", nullable = false, columnDefinition = "DATETIME")
 	private LocalDateTime fechaCompra;
-	
-	@ManyToOne
-	@JoinColumn(name = "id_usuario", referencedColumnName = "id", insertable = false, nullable = false)
-	private Usuario usuario;
 	
 	
 	public Integer getId() {
@@ -77,12 +71,7 @@ public class Productos {
 	public void setFechaCompra(LocalDateTime fechaCompra) {
 		this.fechaCompra = fechaCompra;
 	}
-	public Usuario getUsuario() {
-		return usuario;
-	}
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
+
 	
 	
 	

@@ -21,9 +21,10 @@ public class DevolucionesMapper {
 		dto.setTamanio(devoluciones.getTamanio());
 		dto.setPeso(devoluciones.getPeso());
 		
-		dto.setCliente(devoluciones.getUsuario().getNombre());
+		dto.setCliente(devoluciones.getUsuario().getNombre() + " " + devoluciones.getUsuario().getApellidos());
 		dto.setTelefono(devoluciones.getUsuario().getTelefono());
 		dto.setCorreo(devoluciones.getUsuario().getCorreo());
+		dto.setDireccion(devoluciones.getUsuario().getDireccion());
 		
 		dto.setTransportista(devoluciones.getTransportista().getNombre());
 		

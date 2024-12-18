@@ -2,8 +2,6 @@ package com.devoluciones.persistence.entities;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -45,10 +43,6 @@ public class Usuario {
 	private String correo;
 	
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
-	@JsonIgnore
-	private List<Productos> productos;
-	
-	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
 	private List<Devoluciones> devoluciones;
 	
 	public Integer getId() {
@@ -80,12 +74,6 @@ public class Usuario {
 	}
 	public void setContrasenia(String contrasenia) {
 		this.contrasenia = contrasenia;
-	}
-	public List<Productos> getProductos() {
-		return productos;
-	}
-	public void setProductos(List<Productos> productos) {
-		this.productos = productos;
 	}
 	public String getTelefono() {
 		return telefono;

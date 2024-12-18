@@ -12,6 +12,10 @@ public class ProductoDevolucionMapper {
 		dto.setId(productoDevolucion.getId());
 		dto.setIdProducto(productoDevolucion.getIdProducto());
 		dto.setProducto(productoDevolucion.getProductos().getNombre());
+		dto.setPrecio(productoDevolucion.getProductos().getPrecio());
+		dto.setTiendaNombre(productoDevolucion.getProductos().getTiendaNombre());
+		dto.setFechaCompra(productoDevolucion.getProductos().getFechaCompra());
+		
 		return dto;
 	}
 	

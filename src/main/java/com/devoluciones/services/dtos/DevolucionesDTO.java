@@ -22,6 +22,7 @@ public class DevolucionesDTO {
 	private String cliente;
 	private String telefono;
 	private String correo;
+	private String direccion;
 	private String transportista;
 	private List<ProductoDevolucionOutputDTO> producto;
 	
@@ -78,6 +79,12 @@ public class DevolucionesDTO {
 	}
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+	public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 	public List<ProductoDevolucionOutputDTO> getProducto() {
 		return producto;

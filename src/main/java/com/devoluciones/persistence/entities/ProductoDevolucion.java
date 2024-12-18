@@ -17,18 +17,18 @@ public class ProductoDevolucion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "id_devolucion")
+	@Column(name = "devolucion_id")
 	private Integer idDevolucion;
 	
-	@Column(name = "id_producto")
+	@Column(name = "producto_id")
 	private Integer idProducto;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_devolucion", referencedColumnName = "id", insertable = false, updatable = false)
+	@JoinColumn(name = "devolucion_id", referencedColumnName = "id", insertable = false, updatable = false)
 	private Devoluciones devolucion;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_producto", referencedColumnName = "id", insertable = false, updatable = false)
+	@JoinColumn(name = "producto_id", referencedColumnName = "id", insertable = false, updatable = false)
 	private Productos producto;
 
 	public Integer getId() {

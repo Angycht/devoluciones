@@ -1,5 +1,8 @@
 package com.devoluciones.services.dtos;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class ProductoDevolucionInputDTO {
 	
 	private Integer id;
