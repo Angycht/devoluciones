@@ -7,4 +7,5 @@ import com.devoluciones.persistence.entities.Devoluciones;
 
 public interface DevolucionesRepository extends ListCrudRepository<Devoluciones, Integer> {
 	
+	
 }

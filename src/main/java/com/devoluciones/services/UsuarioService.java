@@ -15,11 +15,21 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
+	
 	//Devolvemos todos los usuarios de la base de datos
 	public List<Usuario> findAll(){
 		return this.usuarioRepository.findAll();
 	}
 	
+	
+	 public boolean autenticarUsuario(String correo, String contrasenia) {
+	        Optional<Usuario> usuario = usuarioRepository.findByCorreo(correo);
+
+	        if (usuario.isPresent() && usuario.get().getContrasenia().equals(contrasenia)) {
+	            return true; // Usuario autenticado correctamente
+	        }
+	        return false; // Usuario o contraseña incorrectos
+	    }
 	//Devolvemos si el usuario que nos pasa existe o no en la base de datos
 	public boolean exitsUsuario (int idUsuario) {
 		return this.usuarioRepository.existsById(idUsuario);
@@ -30,8 +40,11 @@ public class UsuarioService {
 		return this.usuarioRepository.findById(idUsuario);
 	}
 	
+	
+	 
 	// Guardamos el nuevo usuario que se ha creado
 	public Usuario create(Usuario usuario) {
+		
 		return this.usuarioRepository.save(usuario);
 	} 
 	
@@ -39,6 +52,7 @@ public class UsuarioService {
 	public Usuario save(Usuario usuario) {
 		return this.usuarioRepository.save(usuario);
 	}
+	
 	
 	//Funcion para comprobar si existe el usuario y si es así se elimina
 	public boolean delete (int idUsuario) {
